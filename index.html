@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="app.css">
 
   <script src="js/components/phone-catalogue/phone-catalogue.js" defer></script>
-  <script src="js/pages/shop-page.js" defer></script>
+  <script src="js/pages/shop-page/shop-page.js" defer></script>
   <script src="js/app.js" defer></script>
 </head>
 <body>
@@ -22,7 +22,7 @@
 
 
 
-<script type="text/template" id="template-phone-catalogue">
+<template id="template-phone-catalogue">
   <ul class="phones">
     <li class="thumbnail">
       <a href="#!/phones/motorola-xoom-with-wi-fi" class="thumb">
@@ -34,10 +34,10 @@
         Experience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb).</p>
     </li>
   </ul>
-</script>
+</template>
 
 
-<script type="text/template" id="template-shop-page">
+<template id="template-shop-page">
   <!--Sidebar content-->
   <div class="col-md-2">
 
@@ -69,7 +69,7 @@
   <div class="col-md-10">
     <div data-component="phoneCatalogue"></div>
   </div>
-</script>
+</template>
 
 </body>
 </html>
