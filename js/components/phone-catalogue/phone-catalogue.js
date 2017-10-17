@@ -160,12 +160,40 @@ const phones = [
 class PhoneCatalogue {
   constructor(options) {
     this._element = options.element;
-    this._template = document.getElementById('template-phone-catalogue').innerHTML;
+//    this._template = document.getElementById('template-phone-catalogue').innerHTML;
 
+    this._template = createListTemplate();
     this._render();
   }
 
   _render() {
     this._element.innerHTML = this._template;
   }
+
+}
+
+function createListTemplate() {
+  let arrPhones = phones,
+    template,
+    htmlText = '';
+  for (let i = 0; i < arrPhones.length; i++) {
+    template = '  <ul class="phones">\n' +
+      '    <li class="thumbnail">\n' +
+      '      <a href="#!/phones/';
+    template += arrPhones[i].id + '" class="thumb">\n' +
+      '        <img alt="';
+    template += arrPhones[i].name + '" src="';
+    template += arrPhones[i].imageUrl + '">\n' +
+      '      </a>\n' +
+      '      <a href="#!/phones/';
+    template += arrPhones[i].id + '">';
+    template += arrPhones[i].name + '</a>\n' +
+      '      <p>';
+    template += arrPhones[i].snippet + '</p>\n' +
+      '    </li>\n' +
+      '  </ul>';
+
+    htmlText += template;
+  }
+  return htmlText;
 }
