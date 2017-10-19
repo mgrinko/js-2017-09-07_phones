@@ -174,8 +174,7 @@ class PhoneCatalogue {
 
 
 function createListTemplate(elem) {
-  let htmlText = _.template(elem);
-  htmlText = htmlText({arr: phones});
+  let htmlText = _.template(elem)({arr: phones});
 
   return htmlText;
 }
