@@ -162,10 +162,19 @@ class PhoneCatalogue {
     this._element = options.element;
     this._template = document.getElementById('template-phone-catalogue').innerHTML;
 
+    this._template = createListTemplate(this._template);
     this._render();
   }
 
   _render() {
     this._element.innerHTML = this._template;
   }
+
+}
+
+
+function createListTemplate(elem) {
+  let htmlText = _.template(elem)({arr: phones});
+
+  return htmlText;
 }
