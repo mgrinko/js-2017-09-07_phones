@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="app.css">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js"></script>
   <script src="js/components/phone-catalogue/phone-catalogue.js" defer></script>
   <script src="js/pages/shop-page/shop-page.js" defer></script>
   <script src="js/app.js" defer></script>
@@ -22,20 +23,18 @@
 
 
 
-<template id="template-phone-catalogue">
+<script type = "text/template" id="template-phone-catalogue">
+  <% for (let i = 0; i < arr.length; i++)  { %>
   <ul class="phones">
     <li class="thumbnail">
-      <a href="#!/phones/motorola-xoom-with-wi-fi" class="thumb">
-        <img alt="Motorola XOOM™ with Wi-Fi" src="img/phones/motorola-xoom-with-wi-fi.0.jpg">
+      <a href="#!/phones/<%=encodeURIComponent(arr[i].id)%>" class="thumb">
+        <img alt=<%=arr[i].name%> src=<%=arr[i].imageUrl%>>
       </a>
-      <a href="#!/phones/motorola-xoom-with-wi-fi">Motorola XOOM™ with Wi-Fi</a>
-      <p>The Next, Next Generation
-
-        Experience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb).</p>
+      <a href="#!/phones/<%=encodeURIComponent(arr[i].id)%>"><%=arr[i].name%></a>
+      <p><%=arr[i].snippet%></p>
     </li>
-  </ul>
-
-</template>
+  </ul><% } %>
+</script>
 
 
 <template id="template-shop-page">
