@@ -161,11 +161,13 @@ class PhoneCatalogue {
   constructor(options) {
     this._element = options.element;
     this._template = document.getElementById('template-phone-catalogue').innerHTML;
-
+    this._template = _.template(this._template);
     this._render();
   }
 
   _render() {
-    this._element.innerHTML = this._template;
+    this._element.innerHTML = this._template({
+      phones: phones
+    });
   }
 }
