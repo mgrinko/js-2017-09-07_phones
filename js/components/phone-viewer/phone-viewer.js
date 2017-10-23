@@ -17,21 +17,17 @@ class PhoneViewer extends Component {
   constructor(options) {
     super(options.element);
 
-    this._element.addEventListener('click', (event) => {
-      let backButton = event.target.closest('[data-element="backButton"]');
-
-      if (!backButton) {
-        return;
-      }
-
-      this._element.dispatchEvent(new CustomEvent('back'));
-    })
+    this.on('click', this._onBackClick.bind(this), '[data-element="backButton"]')
   }
 
   showPhone(phoneId) {
     let phoneDetails = this._getPhoneDetails(phoneId);
 
     this._render(phoneDetails);
+  }
+
+  _onBackClick() {
+    this._element.dispatchEvent(new CustomEvent('back'));
   }
 
   _render(phoneDetails) {

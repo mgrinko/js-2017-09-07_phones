@@ -161,19 +161,17 @@ class PhoneCatalogue extends Component {
   constructor(options) {
     super(options.element);
 
-    this._element.addEventListener('click', this._onPhoneLinkClick.bind(this));
+    this.on(
+      'click',
+      this._onPhoneLinkClick.bind(this),
+      '[data-element="phoneLink"]'
+    );
 
     this._render();
   }
 
   _onPhoneLinkClick(event) {
-    let link = event.target.closest('[data-element="phoneLink"]');
-
-    if (!link) {
-      return;
-    }
-
-    let phoneElement = link.closest('[data-element="phone"]');
+    let phoneElement = event.target.closest('[data-element="phone"]');
 
     let customEvent = new CustomEvent('phoneSelected', {
       detail: phoneElement.dataset.phoneId,

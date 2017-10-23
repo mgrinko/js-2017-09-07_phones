@@ -15,7 +15,7 @@ class ShopPage {
       element: this._element.querySelector('[data-component="phoneCatalogue"]'),
     });
 
-    this._catalogue._element.addEventListener('phoneSelected', (event) => {
+    this._catalogue.on('phoneSelected', (event) => {
       let phoneId = event.detail;
 
       this._viewer.showPhone(phoneId);
@@ -23,7 +23,7 @@ class ShopPage {
       this._catalogue.hide();
     });
 
-    this._viewer._element.addEventListener('back', () => {
+    this._viewer.on('back', () => {
       this._viewer.hide();
       this._catalogue.show();
     });
