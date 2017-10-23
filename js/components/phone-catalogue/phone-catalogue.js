@@ -157,9 +157,9 @@ const phones = [
 ];
 
 
-class PhoneCatalogue {
+class PhoneCatalogue extends Component {
   constructor(options) {
-    this._element = options.element;
+    super(options.element);
 
     this._element.addEventListener('click', this._onPhoneLinkClick.bind(this));
 
@@ -175,7 +175,12 @@ class PhoneCatalogue {
 
     let phoneElement = link.closest('[data-element="phone"]');
 
-    console.log(phoneElement.dataset.phoneId);
+    let customEvent = new CustomEvent('phoneSelected', {
+      detail: phoneElement.dataset.phoneId,
+      bubbles: false,
+    });
+
+    this._element.dispatchEvent(customEvent);
   }
 
   _render() {

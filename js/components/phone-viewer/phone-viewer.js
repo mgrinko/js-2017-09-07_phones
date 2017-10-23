@@ -13,19 +13,38 @@ let details = {
 };
 
 
-class PhoneViewer {
+class PhoneViewer extends Component {
   constructor(options) {
-    this._element = options.element;
+    super(options.element);
 
-    this._render();
+    this._element.addEventListener('click', (event) => {
+      let backButton = event.target.closest('[data-element="backButton"]');
+
+      if (!backButton) {
+        return;
+      }
+
+      this._element.dispatchEvent(new CustomEvent('back'));
+    })
   }
 
-  _render() {
+  showPhone(phoneId) {
+    let phoneDetails = this._getPhoneDetails(phoneId);
+
+    this._render(phoneDetails);
+  }
+
+  _render(phoneDetails) {
     let rawTemplate = document.getElementById('template-phone-viewer').innerHTML;
     let compiledTemplate = _.template(rawTemplate);
 
     this._element.innerHTML = compiledTemplate({
-      phone: details,
+      phone: phoneDetails,
     });
+  }
+
+  _getPhoneDetails(phoneId) {
+    // ToDo: replace with server call
+    return details;
   }
 }

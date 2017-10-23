@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="app.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js" defer></script>
+  <script src="js/components/component.js" defer></script>
   <script src="js/components/phone-catalogue/phone-catalogue.js" defer></script>
   <script src="js/components/phone-viewer/phone-viewer.js" defer></script>
   <script src="js/components/shopping-cart/shopping-cart.js" defer></script>
@@ -89,6 +90,8 @@
 <script type="text/template" id="template-phone-viewer">
 
   <img class="phone" src="<%= phone.images[0] %>">
+
+  <button data-element="backButton">Back</button>
   <h1><%- phone.name %></h1>
 
   <p><%- phone.description %></p>

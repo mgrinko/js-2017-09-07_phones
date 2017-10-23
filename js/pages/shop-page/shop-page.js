@@ -7,12 +7,25 @@ class ShopPage {
 
     this._render();
 
-    new PhoneCatalogue({
+    this._viewer = new PhoneViewer({
+      element: this._element.querySelector('[data-component="phoneViewer"]'),
+    });
+
+    this._catalogue = new PhoneCatalogue({
       element: this._element.querySelector('[data-component="phoneCatalogue"]'),
     });
 
-    new PhoneViewer({
-      element: this._element.querySelector('[data-component="phoneViewer"]'),
+    this._catalogue._element.addEventListener('phoneSelected', (event) => {
+      let phoneId = event.detail;
+
+      this._viewer.showPhone(phoneId);
+      this._viewer.show();
+      this._catalogue.hide();
+    });
+
+    this._viewer._element.addEventListener('back', () => {
+      this._viewer.hide();
+      this._catalogue.show();
     });
   }
 
