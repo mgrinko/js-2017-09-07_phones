@@ -161,7 +161,21 @@ class PhoneCatalogue {
   constructor(options) {
     this._element = options.element;
 
+    this._element.addEventListener('click', this._onPhoneLinkClick.bind(this));
+
     this._render();
+  }
+
+  _onPhoneLinkClick(event) {
+    let link = event.target.closest('[data-element="phoneLink"]');
+
+    if (!link) {
+      return;
+    }
+
+    let phoneElement = link.closest('[data-element="phone"]');
+
+    console.log(phoneElement.dataset.phoneId);
   }
 
   _render() {
