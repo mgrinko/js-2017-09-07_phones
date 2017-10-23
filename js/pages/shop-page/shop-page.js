@@ -7,7 +7,6 @@ class ShopPage {
 
     this._render();
 
-
     new PhoneCatalogue({
       element: this._element.querySelector('[data-component="phoneCatalogue"]'),
     });

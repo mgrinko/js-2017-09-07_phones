@@ -160,12 +160,18 @@ const phones = [
 class PhoneCatalogue {
   constructor(options) {
     this._element = options.element;
-    this._template = document.getElementById('template-phone-catalogue').innerHTML;
 
     this._render();
   }
 
   _render() {
-    this._element.innerHTML = this._template;
+    let rawTemplate = document.getElementById('template-phone-catalogue').innerHTML;
+    let compiledTemplate = _.template(rawTemplate);
+
+    console.log(compiledTemplate);
+
+    this._element.innerHTML = compiledTemplate({
+      phones: phones,
+    });
   }
 }
