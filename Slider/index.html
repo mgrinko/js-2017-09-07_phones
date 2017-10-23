@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .slider {
+      border-radius: 5px;
+      background: #E0E0E0;
+      background: -moz-linear-gradient(left top, #E0E0E0, #EEEEEE) repeat scroll 0 0 transparent;
+      background: -webkit-gradient(linear, left top, right bottom, from(#E0E0E0), to(#EEEEEE));
+      background: linear-gradient(left top, #E0E0E0, #EEEEEE);
+      width: 310px;
+      height: 15px;
+      margin: 5px;
+    }
+
+    .slider__thumb {
+      border: 10px solid black;
+      width: 10px;
+      height: 25px;
+      border-radius: 3px;
+      position: relative;
+      left: 10px;
+      top: -15px;
+      background: blue;
+      cursor: pointer;
+    }
+  </style>
+  <script src="slider.js"></script>
+</head>
+<body>
+
+
+<br>
+<br>
+<div class="slider">
+  <div class="slider__thumb"></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="slider">
+  <div class="slider__thumb"></div>
+</div>
+<br>
+<br>
+<br>
+
+  <div class="slider">
+    <div class="slider__thumb"></div>
+  </div>
+
+  <script>
+    Array.from(document.querySelectorAll('.slider'))
+      .forEach((sliderElement) => {
+        let slider = new Slider({
+          element: sliderElement
+        });
+
+        slider.move(50);
+      });
+
+  </script>
+</body>
+</html>

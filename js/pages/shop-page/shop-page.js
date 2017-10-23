@@ -10,6 +10,10 @@ class ShopPage {
     new PhoneCatalogue({
       element: this._element.querySelector('[data-component="phoneCatalogue"]'),
     });
+
+    new PhoneViewer({
+      element: this._element.querySelector('[data-component="phoneViewer"]'),
+    });
   }
 
   _render() {

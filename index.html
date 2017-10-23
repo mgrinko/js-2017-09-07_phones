@@ -8,6 +8,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js" defer></script>
   <script src="js/components/phone-catalogue/phone-catalogue.js" defer></script>
+  <script src="js/components/phone-viewer/phone-viewer.js" defer></script>
+  <script src="js/components/shopping-cart/shopping-cart.js" defer></script>
   <script src="js/pages/shop-page/shop-page.js" defer></script>
   <script src="js/app.js" defer></script>
 </head>
@@ -18,24 +20,6 @@
 </div>
 
 
-<script type="text/template" id="template-phone-catalogue">
-
-  <ul class="phones">
-    <% phones.forEach((phone) => { %>
-
-      <li class="thumbnail">
-        <a href="#!/phones/<%= phone.id %>" class="thumb">
-          <img alt="<%- phone.name %>" src="<%= phone.imageUrl %>">
-        </a>
-        <a href="#!/phones/motorola-xoom-with-wi-fi"><%- phone.name %></a>
-        <p><%- phone.snippet %></p>
-      </li>
-
-    <% }); %>
-  </ul>
-
-
-</script>
 
 <script type="text/template" id="template-shop-page">
   <!--Sidebar content-->
@@ -68,7 +52,43 @@
   <!--Body content-->
   <div class="col-md-10">
     <div data-component="phoneCatalogue"></div>
+    <div data-component="phoneViewer"></div>
   </div>
+</script>
+
+<script type="text/template" id="template-phone-catalogue">
+  <ul class="phones">
+    <% phones.forEach((phone) => { %>
+
+      <li class="thumbnail">
+        <a href="#!/phones/<%= phone.id %>" class="thumb">
+          <img alt="<%- phone.name %>" src="<%= phone.imageUrl %>">
+        </a>
+        <a href="#!/phones/motorola-xoom-with-wi-fi"><%- phone.name %></a>
+        <p><%- phone.snippet %></p>
+      </li>
+
+    <% }); %>
+  </ul>
+</script>
+
+
+
+<script type="text/template" id="template-phone-viewer">
+
+  <img class="phone" src="<%= phone.images[0] %>">
+  <h1><%- phone.name %></h1>
+
+  <p><%- phone.description %></p>
+
+  <ul class="phone-thumbs">
+    <% phone.images.forEach((imageUrl) => { %>
+      <li>
+        <img src="<%= imageUrl %>">
+      </li>
+    <% }); %>
+  </ul>
+
 </script>
 
 </body>

@@ -168,8 +168,6 @@ class PhoneCatalogue {
     let rawTemplate = document.getElementById('template-phone-catalogue').innerHTML;
     let compiledTemplate = _.template(rawTemplate);
 
-    console.log(compiledTemplate);
-
     this._element.innerHTML = compiledTemplate({
       phones: phones,
     });
