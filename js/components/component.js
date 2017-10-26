@@ -15,13 +15,13 @@ class Component {
     this._element.classList.remove(HIDDEN_CLASS);
   }
 
-  on(eventName, handler, selector) {
+  on(eventName, callback, selector) {
     this._element.addEventListener(eventName, (event) => {
       if (selector && !event.target.closest(selector)) {
         return;
       }
 
-      handler(event);
+      callback(event);
     });
   }
 }

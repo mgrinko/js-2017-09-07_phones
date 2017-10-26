@@ -161,11 +161,7 @@ class PhoneCatalogue extends Component {
   constructor(options) {
     super(options.element);
 
-    this.on(
-      'click',
-      this._onPhoneLinkClick.bind(this),
-      '[data-element="phoneLink"]'
-    );
+    this.on('click', this._onPhoneLinkClick.bind(this), '[data-element="phoneLink"]');
 
     this._render();
   }
