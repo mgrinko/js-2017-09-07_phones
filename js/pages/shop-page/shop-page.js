@@ -27,7 +27,7 @@ class ShopPage {
       element: this._element.querySelector('[data-component="phoneCatalogue"]'),
     });
 
-    this._loadPhones();
+
 
     this._catalogue.on('phoneSelected', (event) => {
       let phoneId = event.detail;
@@ -41,6 +41,10 @@ class ShopPage {
       this._viewer.hide();
       this._catalogue.show();
     });
+
+    setTimeout(() => {
+      this._loadPhones();
+    }, 1000);
   }
 
   _render() {
@@ -54,15 +58,18 @@ class ShopPage {
   _loadPhones() {
     let xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'http://localhost:8080/server/data/phones/phones.json', false);
+    xhr.open('GET', 'http://localhost:8080/server/data/phones/phones.json', true);
     xhr.send();
 
-    if (xhr.status !== 200) {
-      console.error( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
-    } else {
-      let phones = JSON.parse(xhr.responseText);
+    xhr.onload = () => {
+      if (xhr.status !== 200) {
+        console.error( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+      } else {
+        let phones = JSON.parse(xhr.responseText);
 
-      this._catalogue.showPhones(phones)
-    }
+        this._catalogue.showPhones(phones)
+      }
+    };
+
   }
 }
