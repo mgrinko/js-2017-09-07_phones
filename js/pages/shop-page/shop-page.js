@@ -27,49 +27,27 @@ class ShopPage {
       element: this._element.querySelector('[data-component="phoneCatalogue"]'),
     });
 
+    PhoneService.getAll((phones) => {
+      this._catalogue.showPhones(phones)
+    });
 
 
     this._catalogue.on('phoneSelected', (event) => {
       let phoneId = event.detail;
-      let phone = this._getPhoneDetails(phoneId);
 
-      this._viewer.showPhone(phone);
-      this._catalogue.hide();
+      PhoneService.get(phoneId, (phone) => {
+        this._viewer.showPhone(phone);
+        this._catalogue.hide();
+      });
     });
 
     this._viewer.on('back', () => {
       this._viewer.hide();
       this._catalogue.show();
     });
-
-    setTimeout(() => {
-      this._loadPhones();
-    }, 1000);
   }
 
   _render() {
     this._element.innerHTML = this._template;
-  }
-
-  _getPhoneDetails() {
-    return details;
-  }
-
-  _loadPhones() {
-    let xhr = new XMLHttpRequest();
-
-    xhr.open('GET', 'http://localhost:8080/server/data/phones/phones.json', true);
-    xhr.send();
-
-    xhr.onload = () => {
-      if (xhr.status !== 200) {
-        console.error( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
-      } else {
-        let phones = JSON.parse(xhr.responseText);
-
-        this._catalogue.showPhones(phones)
-      }
-    };
-
   }
 }
