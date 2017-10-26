@@ -162,8 +162,11 @@ class PhoneCatalogue extends Component {
     super(options.element);
 
     this.on('click', this._onPhoneLinkClick.bind(this), '[data-element="phoneLink"]');
+  }
 
-    this._render();
+  showPhones(phones) {
+    this._render(phones);
+    this.show();
   }
 
   _onPhoneLinkClick(event) {
@@ -177,12 +180,12 @@ class PhoneCatalogue extends Component {
     this._element.dispatchEvent(customEvent);
   }
 
-  _render() {
+  _render(phones) {
     let rawTemplate = document.getElementById('template-phone-catalogue').innerHTML;
     let compiledTemplate = _.template(rawTemplate);
 
     this._element.innerHTML = compiledTemplate({
-      phones: phones,
+      phones: phones
     });
   }
 }

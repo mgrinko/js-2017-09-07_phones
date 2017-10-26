@@ -27,6 +27,8 @@ class ShopPage {
       element: this._element.querySelector('[data-component="phoneCatalogue"]'),
     });
 
+    this._loadPhones();
+
     this._catalogue.on('phoneSelected', (event) => {
       let phoneId = event.detail;
       let phone = this._getPhoneDetails(phoneId);
@@ -47,5 +49,20 @@ class ShopPage {
 
   _getPhoneDetails() {
     return details;
+  }
+
+  _loadPhones() {
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET', 'http://localhost:8080/server/data/phones/phones.json', false);
+    xhr.send();
+
+    if (xhr.status !== 200) {
+      console.error( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+    } else {
+      let phones = JSON.parse(xhr.responseText);
+
+      this._catalogue.showPhones(phones)
+    }
   }
 }
