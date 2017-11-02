@@ -17,20 +17,8 @@ class ShopPage {
       element: this._element.querySelector('[data-component="phoneCatalogue"]'),
     });
 
-    let phonesPromise = PhoneService.getAll();
-
-    let documentClickPromise = new Promise((resolve, reject) => {
-      document.addEventListener('click', () => {
-        resolve();
-      });
-    });
-
-
-    Promise.all([
-      documentClickPromise,
-      phonesPromise,
-    ])
-      .then(([ ,phones]) => {
+    PhoneService.getAll()
+      .then((phones) => {
         this._catalogue.showPhones(phones)
       });
 
