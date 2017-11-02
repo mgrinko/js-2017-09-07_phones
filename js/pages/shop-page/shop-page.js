@@ -28,7 +28,7 @@ class ShopPage {
 
       PhoneService.get(phoneId)
         .then((phone) => {
-          this._showPhoneDetails(phones)
+          this._showPhoneDetails(phone)
         });
     });
 
