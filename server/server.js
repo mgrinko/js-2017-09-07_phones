@@ -12,9 +12,7 @@ var file = new static.Server('.', {
 function accept(request, response) {
 
   if (request.url.startsWith('/server/data/')) {
-    setTimeout(() => {
-      file.serve(request, response);
-    }, 3000);
+    file.serve(request, response);
   } else {
     file.serve(request, response);
   }

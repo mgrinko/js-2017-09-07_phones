@@ -1,7 +1,11 @@
 'use strict';
 
+import PhoneViewer from '../../components/phone-viewer/phone-viewer.js'
+import PhoneCatalogue from '../../components/phone-catalogue/phone-catalogue.js'
+import PhoneService from '../../services/phone-service.js'
 
-class ShopPage {
+
+export default class ShopPage {
   constructor(options) {
 
     this._element = options.element;

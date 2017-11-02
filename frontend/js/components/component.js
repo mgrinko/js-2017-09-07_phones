@@ -2,7 +2,7 @@
 
 const HIDDEN_CLASS = 'js-hidden';
 
-class Component {
+export default class Component {
   constructor(element) {
     this._element = element;
   }
