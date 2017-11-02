@@ -1,13 +1,25 @@
-const path = require('path');
+const path = require('path')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+
 
 module.exports = {
-  entry: './frontend/js/app.js',
+  entry: {
+    build: './frontend/js/app.js',
+    auth: './frontend/js/auth.js',
+  },
   output: {
-    filename: 'build.js',
-    path: path.resolve(__dirname, 'public', 'js')
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'public', 'js'),
+    publicPath: '/public/js/',
   },
   watch: true,
   devtool: 'source-map',
+
+  plugins: [
+    new UglifyJSPlugin({
+      sourceMap: true
+    })
+  ],
 
   module: {
     rules: [
@@ -18,7 +30,29 @@ module.exports = {
       {
         test: /\.hbs$/,
         loader: "handlebars-loader"
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" }
+        ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ]
+  },
+
+  devServer: {
+    contentBase: path.join(__dirname, "public"),
+    port: 9000
   }
 };
