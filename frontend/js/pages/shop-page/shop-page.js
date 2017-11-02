@@ -1,16 +1,16 @@
 'use strict';
 
+import template from './shop-page.html';
+
 import PhoneViewer from '../../components/phone-viewer/phone-viewer.js'
 import PhoneCatalogue from '../../components/phone-catalogue/phone-catalogue.js'
 import PhoneService from '../../services/phone-service.js'
-
 
 export default class ShopPage {
   constructor(options) {
 
     this._element = options.element;
-    this._template = document.getElementById('template-shop-page').innerHTML;
-
+    this._template = template;
     this._render();
 
     this._viewer = new PhoneViewer({

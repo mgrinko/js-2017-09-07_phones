@@ -1,7 +1,7 @@
 'use strict';
 
-import Component from '../component.js'
-
+import compiledTemplate from './phone-catalogue.hbs';
+import Component from '../component.js';
 
 export default class PhoneCatalogue extends Component {
   constructor(options) {
@@ -27,9 +27,6 @@ export default class PhoneCatalogue extends Component {
   }
 
   _render(phones) {
-    let rawTemplate = document.getElementById('template-phone-catalogue').innerHTML;
-    let compiledTemplate = _.template(rawTemplate);
-
     this._element.innerHTML = compiledTemplate({
       phones: phones
     });

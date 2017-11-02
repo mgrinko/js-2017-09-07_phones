@@ -1,5 +1,6 @@
 'use strict';
 
+import compiledTemplate from './phone-viewer.hbs';
 import Component from '../component.js'
 
 
@@ -20,9 +21,6 @@ export default class PhoneViewer extends Component {
   }
 
   _render(phoneDetails) {
-    let rawTemplate = document.getElementById('template-phone-viewer').innerHTML;
-    let compiledTemplate = _.template(rawTemplate);
-
     this._element.innerHTML = compiledTemplate({
       phone: phoneDetails,
     });
