@@ -1,16 +1,14 @@
-const path = require('path')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const path = require('path');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 
 module.exports = {
   entry: {
     build: './frontend/js/app.js',
-    auth: './frontend/js/auth.js',
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'public', 'js'),
-    publicPath: '/public/js/',
+    path: path.resolve(__dirname, 'public'),
   },
   watch: true,
   devtool: 'source-map',
@@ -53,6 +51,6 @@ module.exports = {
 
   devServer: {
     contentBase: path.join(__dirname, "public"),
-    port: 9000
+    publicPath: '/'
   }
 };
