@@ -24,4 +24,13 @@ export default class Component {
       callback(event);
     });
   }
+
+  _trigger(eventName, data) {
+    let customEvent = new CustomEvent(eventName, {
+      detail: data,
+      bubbles: false,
+    });
+
+    this._element.dispatchEvent(customEvent);
+  }
 }

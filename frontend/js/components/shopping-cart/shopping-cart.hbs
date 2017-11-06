@@ -1,0 +1,11 @@
+<h4>Shopping cart</h4>
+
+{{#if items.length }}
+  <ul>
+    {{#each items as |item| }}
+      <li>{{item}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>There is no items yet!</p>
+{{/if}}
