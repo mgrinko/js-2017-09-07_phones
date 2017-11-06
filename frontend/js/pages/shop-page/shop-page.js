@@ -17,14 +17,31 @@ export default class ShopPage {
     this._render();
 
 
+    console.log(window.location.hash);
+
+
+
+
     this._catalogue = new PhoneCatalogue({
       element: this._element.querySelector('[data-component="phoneCatalogue"]'),
     });
 
-    PhoneService.getAll()
-      .then((phones) => {
-        this._catalogue.showPhones(phones)
-      });
+
+    let phoneId = window.location.hash.slice(10);
+
+    if (phoneId) {
+      PhoneService.get(phoneId)
+        .then((phone) => {
+          this._showPhoneDetails(phone);
+        });
+    } else {
+      PhoneService.getAll()
+        .then((phones) => {
+          this._catalogue.showPhones(phones)
+        });
+    }
+
+
 
     this._catalogue.on('phoneSelected', async (event) => {
       let phoneId = event.detail;
@@ -42,6 +59,13 @@ export default class ShopPage {
     this._viewer.on('back', () => {
       this._viewer.hide();
       this._catalogue.show();
+
+      window.history.back();
+
+      PhoneService.getAll()
+        .then((phones) => {
+          this._catalogue.showPhones(phones)
+        });
     });
 
     this._viewer.on('add', (event) => {
