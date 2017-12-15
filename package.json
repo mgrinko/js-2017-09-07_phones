@@ -1,0 +1,37 @@
+{
+  "name": "js-2017-09-07_phones",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf ./public/js && ./node_modules/.bin/webpack",
+    "start": "./node_modules/.bin/webpack-dev-server --inline --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgrinko/js-2017-09-07_phones.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgrinko/js-2017-09-07_phones/issues"
+  },
+  "homepage": "https://github.com/mgrinko/js-2017-09-07_phones#readme",
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.5",
+    "@babel/preset-env": "^7.0.0-beta.5",
+    "babel-polyfill": "^6.26.0",
+    "babel-loader": "^8.0.0-beta.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "css-loader": "^0.28.7",
+    "handlebars": "^4.0.11",
+    "handlebars-loader": "^1.6.0",
+    "node-static": "^0.7.10",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.19.0",
+    "uglifyjs-webpack-plugin": "^1.0.1",
+    "webpack": "3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  }
+}
